@@ -5,7 +5,7 @@
     <Partial />
   </ServiceApplication.Attributes>
   <EntityType
-    Name="Items">
+    Name="MOL">
     <EntityType.Attributes>
       <CreatedModifiedPropertiesEnabled />
     </EntityType.Attributes>
@@ -24,10 +24,12 @@
         <KeyProperty.Attributes>
           <Required />
           <NotSearchable />
+          <DisplayName
+            Value="Id_mol" />
         </KeyProperty.Attributes>
       </KeyProperty>
       <EntityProperty
-        Name="Модель"
+        Name="Фамилия"
         PropertyType=":String">
         <EntityProperty.Attributes>
           <Required />
@@ -36,36 +38,28 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
-        Name="Количество"
-        PropertyType=":Int32">
+        Name="Имя"
+        PropertyType=":String">
         <EntityProperty.Attributes>
           <Required />
-          <NotSearchable />
+          <MaxLength
+            Value="255" />
         </EntityProperty.Attributes>
       </EntityProperty>
-      <NavigationProperty
-        Name="ListType"
-        Association="ListType_Items"
-        FromEnd="Items"
-        ToEnd="ListType" />
-      <NavigationProperty
-        Name="manufacturer"
-        Association="manufacturer_Items"
-        FromEnd="Items"
-        ToEnd="manufacturer" />
-      <NavigationProperty
-        Name="MOL"
-        Association="MOL_Items"
-        FromEnd="Items"
-        ToEnd="MOL" />
       <EntityProperty
-        Name="inv_number"
-        PropertyType=":Int32">
+        Name="Отчество"
+        PropertyType=":String">
         <EntityProperty.Attributes>
           <Required />
-          <NotSearchable />
+          <MaxLength
+            Value="255" />
         </EntityProperty.Attributes>
       </EntityProperty>
+      <NavigationProperty
+        Name="ItemsCollection"
+        Association="MOL_Items"
+        FromEnd="MOL"
+        ToEnd="Items" />
       <EntityProperty
         Name="CreatedBy"
         IsReadOnly="True"
@@ -124,14 +118,14 @@
       <Partial />
     </EntityContainer.Attributes>
     <EntitySet
-      Name="ItemsSet"
+      Name="MOLSet"
       CanDelete="True"
       CanInsert="True"
       CanUpdate="True"
-      EntityType="Items" />
+      EntityType="MOL" />
     <QueryOperation
-      Name="ItemsSet_Single"
-      ReturnType="Items">
+      Name="MOLSet_Single"
+      ReturnType="MOL">
       <QueryOperation.Attributes>
         <Generated />
         <Description
@@ -157,7 +151,7 @@
       <QueryOperation.Source>
         <QuerySourceExpressionTree>
           <MemberExpression
-            Member="ItemsSet" />
+            Member="MOLSet" />
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
       <QueryOperationParameter
@@ -166,12 +160,14 @@
         <QueryOperationParameter.Attributes>
           <Description
             Value="Значение свойства ключа &quot;Id&quot; сущности, которое требуется получить." />
+          <DisplayName
+            Value="Id_mol" />
         </QueryOperationParameter.Attributes>
       </QueryOperationParameter>
     </QueryOperation>
     <QueryOperation
-      Name="ItemsSet_SingleOrDefault"
-      ReturnType="Items">
+      Name="MOLSet_SingleOrDefault"
+      ReturnType="MOL">
       <QueryOperation.Attributes>
         <Generated />
         <Description
@@ -197,7 +193,7 @@
       <QueryOperation.Source>
         <QuerySourceExpressionTree>
           <MemberExpression
-            Member="ItemsSet" />
+            Member="MOLSet" />
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
       <QueryOperationParameter
@@ -206,39 +202,63 @@
         <QueryOperationParameter.Attributes>
           <Description
             Value="Значение свойства ключа &quot;Id&quot; сущности, которое требуется получить." />
+          <DisplayName
+            Value="Id_mol" />
         </QueryOperationParameter.Attributes>
       </QueryOperationParameter>
     </QueryOperation>
+    <AssociationSet
+      Name="MOL_ItemsSet"
+      Association="MOL_Items">
+      <AssociationSetEnd
+        Name="MOL"
+        EntitySet="MOLSet" />
+      <AssociationSetEnd
+        Name="Items"
+        EntitySet="ItemsSet" />
+    </AssociationSet>
   </EntityContainer>
+  <Association
+    Name="MOL_Items">
+    <AssociationEnd
+      Name="MOL"
+      Multiplicity="One"
+      EntityType="MOL">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="Items"
+      Multiplicity="Many"
+      EntityType="Items" />
+  </Association>
   <DataService
     Name="ApplicationDataMapping">
     <DataService.Attributes>
       <Partial />
     </DataService.Attributes>
-    <EntitySetMapping
-      EntitySet="ItemsSet">
-      <EntitySetMapping.Attributes>
-        <SsdlForeignKeyProperty
-          Name="list_type_Items"
-          Nullable="False"
-          Type="int" />
-        <SsdlForeignKeyProperty
-          Name="СправочникТипов_Items"
-          Nullable="False"
-          Type="int" />
-        <SsdlForeignKeyProperty
-          Name="ListType_Items"
-          Nullable="False"
-          Type="int" />
-        <SsdlForeignKeyProperty
-          Name="manufacturer_Items"
-          Nullable="False"
-          Type="int" />
-        <SsdlForeignKeyProperty
-          Name="MOL_Items"
-          Nullable="False"
-          Type="int" />
-      </EntitySetMapping.Attributes>
-    </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="MOL_ItemsSet">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="MOL_ItemsSet" />
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[MOL_ItemsSet]/Members[MOL]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[MOL_ItemsSet]/Members[Items]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="MOL_Items" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
   </DataService>
 </ServiceApplication>

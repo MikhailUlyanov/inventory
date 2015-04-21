@@ -20,7 +20,7 @@
     <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
     <SilverlightApplication>true</SilverlightApplication>
     <DefaultLanguage>en-US</DefaultLanguage>
-    <SupportedCultures>ru</SupportedCultures>
+    <SupportedCultures>en-US</SupportedCultures>
     <XapOutputs>true</XapOutputs>
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
     <XapFilename>inventory.DesktopClient.xap</XapFilename>
@@ -244,6 +244,8 @@
     <LightSwitchModel Include="Properties\Proxies.lsml" />
     <LightSwitchModel Include="Screens\Список.lsml" />
     <LightSwitchModel Include="Screens\EditablemanufacturerSetGrid.lsml" />
+    <LightSwitchModel Include="Screens\SearchmanufacturerSet.lsml" />
+    <LightSwitchModel Include="Screens\SearchMOLSet.lsml" />
     <LightSwitchModel Include="Screens\CreateNewItems.lsml" />
   </ItemGroup>
   <ItemGroup>

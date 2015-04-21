@@ -204,6 +204,8 @@
     <LightSwitchModel Include="DataSources\ApplicationData\ItemsSet.lsml" />
     <LightSwitchModel Include="DataSources\ApplicationData\ListTypeSet.lsml" />
     <LightSwitchModel Include="DataSources\ApplicationData\manufacturerSet.lsml" />
+    <LightSwitchModel Include="DataSources\ApplicationData\MOLSet.lsml" />
+    <LightSwitchModel Include="DataSources\ApplicationData\inventorySet.lsml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

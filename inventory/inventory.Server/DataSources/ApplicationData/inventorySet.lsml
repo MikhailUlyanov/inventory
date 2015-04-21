@@ -5,7 +5,7 @@
     <Partial />
   </ServiceApplication.Attributes>
   <EntityType
-    Name="Items">
+    Name="inventory">
     <EntityType.Attributes>
       <CreatedModifiedPropertiesEnabled />
     </EntityType.Attributes>
@@ -24,10 +24,12 @@
         <KeyProperty.Attributes>
           <Required />
           <NotSearchable />
+          <DisplayName
+            Value="id_inv" />
         </KeyProperty.Attributes>
       </KeyProperty>
       <EntityProperty
-        Name="Модель"
+        Name="Причина"
         PropertyType=":String">
         <EntityProperty.Attributes>
           <Required />
@@ -36,31 +38,8 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
-        Name="Количество"
-        PropertyType=":Int32">
-        <EntityProperty.Attributes>
-          <Required />
-          <NotSearchable />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <NavigationProperty
-        Name="ListType"
-        Association="ListType_Items"
-        FromEnd="Items"
-        ToEnd="ListType" />
-      <NavigationProperty
-        Name="manufacturer"
-        Association="manufacturer_Items"
-        FromEnd="Items"
-        ToEnd="manufacturer" />
-      <NavigationProperty
-        Name="MOL"
-        Association="MOL_Items"
-        FromEnd="Items"
-        ToEnd="MOL" />
-      <EntityProperty
-        Name="inv_number"
-        PropertyType=":Int32">
+        Name="Дата"
+        PropertyType=":Date">
         <EntityProperty.Attributes>
           <Required />
           <NotSearchable />
@@ -124,14 +103,14 @@
       <Partial />
     </EntityContainer.Attributes>
     <EntitySet
-      Name="ItemsSet"
+      Name="inventorySet"
       CanDelete="True"
       CanInsert="True"
       CanUpdate="True"
-      EntityType="Items" />
+      EntityType="inventory" />
     <QueryOperation
-      Name="ItemsSet_Single"
-      ReturnType="Items">
+      Name="inventorySet_Single"
+      ReturnType="inventory">
       <QueryOperation.Attributes>
         <Generated />
         <Description
@@ -157,7 +136,7 @@
       <QueryOperation.Source>
         <QuerySourceExpressionTree>
           <MemberExpression
-            Member="ItemsSet" />
+            Member="inventorySet" />
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
       <QueryOperationParameter
@@ -166,12 +145,14 @@
         <QueryOperationParameter.Attributes>
           <Description
             Value="Значение свойства ключа &quot;Id&quot; сущности, которое требуется получить." />
+          <DisplayName
+            Value="id_inv" />
         </QueryOperationParameter.Attributes>
       </QueryOperationParameter>
     </QueryOperation>
     <QueryOperation
-      Name="ItemsSet_SingleOrDefault"
-      ReturnType="Items">
+      Name="inventorySet_SingleOrDefault"
+      ReturnType="inventory">
       <QueryOperation.Attributes>
         <Generated />
         <Description
@@ -197,7 +178,7 @@
       <QueryOperation.Source>
         <QuerySourceExpressionTree>
           <MemberExpression
-            Member="ItemsSet" />
+            Member="inventorySet" />
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
       <QueryOperationParameter
@@ -206,39 +187,10 @@
         <QueryOperationParameter.Attributes>
           <Description
             Value="Значение свойства ключа &quot;Id&quot; сущности, которое требуется получить." />
+          <DisplayName
+            Value="id_inv" />
         </QueryOperationParameter.Attributes>
       </QueryOperationParameter>
     </QueryOperation>
   </EntityContainer>
-  <DataService
-    Name="ApplicationDataMapping">
-    <DataService.Attributes>
-      <Partial />
-    </DataService.Attributes>
-    <EntitySetMapping
-      EntitySet="ItemsSet">
-      <EntitySetMapping.Attributes>
-        <SsdlForeignKeyProperty
-          Name="list_type_Items"
-          Nullable="False"
-          Type="int" />
-        <SsdlForeignKeyProperty
-          Name="СправочникТипов_Items"
-          Nullable="False"
-          Type="int" />
-        <SsdlForeignKeyProperty
-          Name="ListType_Items"
-          Nullable="False"
-          Type="int" />
-        <SsdlForeignKeyProperty
-          Name="manufacturer_Items"
-          Nullable="False"
-          Type="int" />
-        <SsdlForeignKeyProperty
-          Name="MOL_Items"
-          Nullable="False"
-          Type="int" />
-      </EntitySetMapping.Attributes>
-    </EntitySetMapping>
-  </DataService>
 </ServiceApplication>

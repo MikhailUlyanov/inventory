@@ -13,10 +13,13 @@ namespace LightSwitchApplication
 
     public partial class Список
     {
-        partial void Method_Execute()
-        {
-            this.Application.ShowCreateNewItems();
 
+
+
+        partial void Method4_Execute()
+        {
+           
+            
         }
     }
     

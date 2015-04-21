@@ -43,6 +43,12 @@
       Name="ScreenCommandShowEditablemanufacturerSetGrid"
       Target="!module/Methods[ShowEditablemanufacturerSetGrid]" />
     <ApplicationCommand
+      Name="ScreenCommandShowSearchmanufacturerSet"
+      Target="!module/Methods[ShowSearchmanufacturerSet]" />
+    <ApplicationCommand
+      Name="ScreenCommandShowSearchMOLSet"
+      Target="!module/Methods[ShowSearchMOLSet]" />
+    <ApplicationCommand
       Name="ScreenCommandShowCreateNewItems"
       Target="!module/Methods[ShowCreateNewItems]" />
   </Application.Commands>
@@ -60,6 +66,12 @@
       <ApplicationNavigationLink
         Name="EditablemanufacturerSetGrid"
         Command="!module/Commands[ScreenCommandShowEditablemanufacturerSetGrid]" />
+      <ApplicationNavigationLink
+        Name="SearchmanufacturerSet"
+        Command="!module/Commands[ScreenCommandShowSearchmanufacturerSet]" />
+      <ApplicationNavigationLink
+        Name="SearchMOLSet"
+        Command="!module/Commands[ScreenCommandShowSearchMOLSet]" />
       <ApplicationNavigationLink
         Name="CreateNewItems"
         Command="!module/Commands[ScreenCommandShowCreateNewItems]" />

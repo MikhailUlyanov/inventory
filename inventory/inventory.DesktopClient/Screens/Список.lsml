@@ -129,43 +129,58 @@
                 </ContentItem.DataSource>
               </ContentItem>
               <ContentItem
-                Name="Количество"
-                Kind="Value"
-                DataType=":Int32">
+                Name="MOL"
+                Kind="Details"
+                DataType="MOL">
+                <ContentItem.Attributes>
+                  <DisplayName
+                    Value="МОЛ" />
+                </ContentItem.Attributes>
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="Items/Properties[Количество]" />
+                        Member="Items/Properties[MOL]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
+                <ContentItem
+                  Name="MOL1"
+                  Kind="Details"
+                  DataType="MOL">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression />
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
               </ContentItem>
-              <ContentItem
-                Name="МОЛ"
-                Kind="Value"
-                DataType=":String">
-                <ContentItem.DataSource>
+              <ContentItem.PropertySources>
+                <ControlPropertySource
+                  Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[BrowseOnly]">
                   <ScreenExpressionTree>
                     <ChainExpression>
-                      <MemberExpression
-                        Member="Items/Properties[МОЛ]" />
+                      <ConstantExpression
+                        Value="True"
+                        ResultType=":Boolean" />
                     </ChainExpression>
                   </ScreenExpressionTree>
-                </ContentItem.DataSource>
-              </ContentItem>
+                </ControlPropertySource>
+              </ContentItem.PropertySources>
             </ContentItem>
             <ContentItem.CommandItems>
               <ContentItem
-                Name="ItemsSet_AddAndEditNew"
+                Name="gridAddAndEditNew"
                 Kind="Command">
+                <ContentItem.Attributes>
+                  <DisplayName
+                    Value="Добавить..." />
+                </ContentItem.Attributes>
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
                     <ChainExpression>
-                      <MemberExpression
-                        Member="Список/Properties[ItemsSet]" />
                       <CallExpression
-                        Target="AddAndEditNew" />
+                        Target="Список/Methods[gridAddAndEditNew]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -235,21 +250,15 @@
             </ContentItem.PropertySources>
           </ContentItem>
           <ContentItem
-            Name="ItemsSet_SelectedItem"
-            Kind="Details"
-            DataType="Items">
-            <ContentItem.DataSource>
-              <ScreenExpressionTree>
-                <ChainExpression>
-                  <MemberExpression
-                    Member="Список/Properties[ItemsSet]" />
-                  <MemberExpression
-                    Member="SelectedItem" />
-                </ChainExpression>
-              </ScreenExpressionTree>
-            </ContentItem.DataSource>
+            Name="CreatModal"
+            Kind="Group"
+            View="Microsoft.LightSwitch.RichClient:ModalWindow">
+            <ContentItem.Attributes>
+              <DisplayName
+                Value="Добавить" />
+            </ContentItem.Attributes>
             <ContentItem
-              Name="ListType1"
+              Name="ItemsSet_SelectedItem_ListType"
               Kind="Details"
               DataType="ListType">
               <ContentItem.Attributes>
@@ -260,47 +269,27 @@
                 <ScreenExpressionTree>
                   <ChainExpression>
                     <MemberExpression
-                      Member="Items/Properties[ListType]" />
+                      Member="Список/Properties[ItemsSet]" />
+                    <MemberExpression
+                      Member="SelectedItem" />
+                    <MemberExpression
+                      Member="ListType" />
                   </ChainExpression>
                 </ScreenExpressionTree>
               </ContentItem.DataSource>
               <ContentItem
-                Name="ListType1Template"
+                Name="ListType1"
                 Kind="Details"
-                DataType="ListType"
-                View="Microsoft.LightSwitch.RichClient:RowsLayout">
+                DataType="ListType">
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
                     <ChainExpression />
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
-                <ContentItem
-                  Name="Название1"
-                  Kind="Value"
-                  DataType=":String">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="ListType/Properties[Название]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
               </ContentItem>
-              <ContentItem.PropertySources>
-                <ControlPropertySource
-                  Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[AttachedLabelPosition]">
-                  <ScreenExpressionTree>
-                    <ConstantExpression
-                      Value="Top"
-                      ResultType=":String" />
-                  </ScreenExpressionTree>
-                </ControlPropertySource>
-              </ContentItem.PropertySources>
             </ContentItem>
             <ContentItem
-              Name="manufacturer2"
+              Name="ItemsSet_SelectedItem_manufacturer"
               Kind="Details"
               DataType="manufacturer">
               <ContentItem.Attributes>
@@ -311,12 +300,16 @@
                 <ScreenExpressionTree>
                   <ChainExpression>
                     <MemberExpression
-                      Member="Items/Properties[manufacturer]" />
+                      Member="Список/Properties[ItemsSet]" />
+                    <MemberExpression
+                      Member="SelectedItem" />
+                    <MemberExpression
+                      Member="manufacturer" />
                   </ChainExpression>
                 </ScreenExpressionTree>
               </ContentItem.DataSource>
               <ContentItem
-                Name="manufacturer3"
+                Name="manufacturer2"
                 Kind="Details"
                 DataType="manufacturer">
                 <ContentItem.DataSource>
@@ -325,148 +318,118 @@
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
               </ContentItem>
-              <ContentItem.PropertySources>
-                <ControlPropertySource
-                  Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[AttachedLabelPosition]">
-                  <ScreenExpressionTree>
-                    <ConstantExpression
-                      Value="Top"
-                      ResultType=":String" />
-                  </ScreenExpressionTree>
-                </ControlPropertySource>
-              </ContentItem.PropertySources>
             </ContentItem>
             <ContentItem
-              Name="Модель1"
+              Name="ItemsSet_SelectedItem_Модель"
               Kind="Value"
               DataType=":String">
               <ContentItem.DataSource>
                 <ScreenExpressionTree>
                   <ChainExpression>
                     <MemberExpression
-                      Member="Items/Properties[Модель]" />
+                      Member="Список/Properties[ItemsSet]" />
+                    <MemberExpression
+                      Member="SelectedItem" />
+                    <MemberExpression
+                      Member="Модель" />
                   </ChainExpression>
                 </ScreenExpressionTree>
               </ContentItem.DataSource>
-              <ContentItem.PropertySources>
-                <ControlPropertySource
-                  Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[AttachedLabelPosition]">
-                  <ScreenExpressionTree>
-                    <ConstantExpression
-                      Value="Top"
-                      ResultType=":String" />
-                  </ScreenExpressionTree>
-                </ControlPropertySource>
-              </ContentItem.PropertySources>
             </ContentItem>
             <ContentItem
-              Name="Количество1"
-              Kind="Value"
-              DataType=":Int32">
+              Name="ItemsSet_SelectedItem_MOL"
+              Kind="Details"
+              DataType="MOL">
+              <ContentItem.Attributes>
+                <DisplayName
+                  Value="МОЛ" />
+              </ContentItem.Attributes>
               <ContentItem.DataSource>
                 <ScreenExpressionTree>
                   <ChainExpression>
                     <MemberExpression
-                      Member="Items/Properties[Количество]" />
-                  </ChainExpression>
-                </ScreenExpressionTree>
-              </ContentItem.DataSource>
-              <ContentItem.PropertySources>
-                <ControlPropertySource
-                  Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[AttachedLabelPosition]">
-                  <ScreenExpressionTree>
-                    <ConstantExpression
-                      Value="Top"
-                      ResultType=":String" />
-                  </ScreenExpressionTree>
-                </ControlPropertySource>
-              </ContentItem.PropertySources>
-            </ContentItem>
-            <ContentItem
-              Name="МОЛ1"
-              Kind="Value"
-              DataType=":String">
-              <ContentItem.DataSource>
-                <ScreenExpressionTree>
-                  <ChainExpression>
+                      Member="Список/Properties[ItemsSet]" />
                     <MemberExpression
-                      Member="Items/Properties[МОЛ]" />
-                  </ChainExpression>
-                </ScreenExpressionTree>
-              </ContentItem.DataSource>
-              <ContentItem.PropertySources>
-                <ControlPropertySource
-                  Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[AttachedLabelPosition]">
-                  <ScreenExpressionTree>
-                    <ConstantExpression
-                      Value="Top"
-                      ResultType=":String" />
-                  </ScreenExpressionTree>
-                </ControlPropertySource>
-              </ContentItem.PropertySources>
-            </ContentItem>
-            <ContentItem
-              Name="Created"
-              Kind="Value"
-              DataType=":DateTimeOffset?"
-              View="Microsoft.LightSwitch.RichClient:DateTimeViewer">
-              <ContentItem.DataSource>
-                <ScreenExpressionTree>
-                  <ChainExpression>
+                      Member="SelectedItem" />
                     <MemberExpression
-                      Member="Items/Properties[Created]" />
+                      Member="MOL" />
                   </ChainExpression>
                 </ScreenExpressionTree>
               </ContentItem.DataSource>
-              <ContentItem.PropertySources>
-                <ControlPropertySource
-                  Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[AttachedLabelPosition]">
+              <ContentItem
+                Name="MOL2"
+                Kind="Details"
+                DataType="MOL">
+                <ContentItem.DataSource>
                   <ScreenExpressionTree>
-                    <ConstantExpression
-                      Value="Top"
-                      ResultType=":String" />
+                    <ChainExpression />
                   </ScreenExpressionTree>
-                </ControlPropertySource>
-              </ContentItem.PropertySources>
+                </ContentItem.DataSource>
+              </ContentItem>
             </ContentItem>
-            <ContentItem
-              Name="Modified"
-              Kind="Value"
-              DataType=":DateTimeOffset?">
-              <ContentItem.DataSource>
-                <ScreenExpressionTree>
-                  <ChainExpression>
-                    <MemberExpression
-                      Member="Items/Properties[Modified]" />
-                  </ChainExpression>
-                </ScreenExpressionTree>
-              </ContentItem.DataSource>
-              <ContentItem.PropertySources>
-                <ControlPropertySource
-                  Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[AttachedLabelPosition]">
+            <ContentItem.CommandItems>
+              <ContentItem
+                Name="AddItems"
+                Kind="Command">
+                <ContentItem.DataSource>
                   <ScreenExpressionTree>
-                    <ConstantExpression
-                      Value="Top"
-                      ResultType=":String" />
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="Список/Properties[ItemsSet]" />
+                      <CallExpression
+                        Target="AddNew" />
+                    </ChainExpression>
                   </ScreenExpressionTree>
-                </ControlPropertySource>
-              </ContentItem.PropertySources>
-            </ContentItem>
+                </ContentItem.DataSource>
+              </ContentItem>
+            </ContentItem.CommandItems>
             <ContentItem.PropertySources>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[WidthSizingMode]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression
+                      Value="Pixels"
+                      ResultType=":String" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HeightSizingMode]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression
+                      Value="Pixels"
+                      ResultType=":String" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[Width]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression
+                      Value="300"
+                      ResultType=":Double" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[Height]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression
+                      Value="300"
+                      ResultType=":Double" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
               <ControlPropertySource
                 Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HorizontalAlignment]">
                 <ScreenExpressionTree>
                   <ConstantExpression
                     Value="Left"
                     ResultType=":String" />
-                </ScreenExpressionTree>
-              </ControlPropertySource>
-              <ControlPropertySource
-                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[BrowseOnly]">
-                <ScreenExpressionTree>
-                  <ConstantExpression
-                    Value="True"
-                    ResultType=":Boolean" />
                 </ScreenExpressionTree>
               </ControlPropertySource>
             </ContentItem.PropertySources>
@@ -545,6 +508,17 @@
         Name="Method1" />
       <ScreenMethod
         Name="Method2" />
+      <ScreenMethod
+        Name="gridAddAndEditNew">
+        <ScreenMethod.Attributes>
+          <BuiltInMethodOverride
+            MethodName="AddAndEditNew" />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+      <ScreenMethod
+        Name="Method3" />
+      <ScreenMethod
+        Name="Method4" />
     </Screen.Methods>
     <Screen.Properties>
       <ScreenCollectionProperty
